@@ -41,18 +41,6 @@ public class OrderController {
 		return orderService.updateOrder(id, status);
 	}
 
-	@DeleteMapping("/deleteOrder/{id}")
-	public ResponseEntity<HttpStatus> deleteOrder(@PathVariable("id") long id) {
-		try {
-			orderService.deleteOrder(id);
-			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-
-	}
-
 	@GetMapping("/searchOrderByStatus")
 	public ResponseEntity<List<Order>> searchOrderByStatus(@RequestParam String status) {
 		List<Order> order = orderService.searchOrderByStatus(status);
@@ -74,5 +62,18 @@ public class OrderController {
 			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok(order);
+	}
+	
+
+
+	@DeleteMapping("/deleteOrder/{id}")
+	public ResponseEntity<HttpStatus> deleteOrder(@PathVariable("id") long id) {
+		try {
+			orderService.deleteOrder(id);
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 }

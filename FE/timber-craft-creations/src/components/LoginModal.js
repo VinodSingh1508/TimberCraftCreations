@@ -20,7 +20,6 @@ function LoginModal({ show, onHide, loggedInUser, setLoggedInUser }) {
   const [profileData, setProfileData] = useState({ userId: "", name: "", email: "", phone: "", pass: "" });
 
   const [apiMessage, setApiMessage] = useState("");
-  //const [loggedInUser, setLoggedInUser] = useState(Cookies.get('user') ? JSON.parse(Cookies.get('user')) : null);
 
   const [loginErrors, setLoginErrors] = useState({});
   const [registerErrors, setRegisterErrors] = useState({});

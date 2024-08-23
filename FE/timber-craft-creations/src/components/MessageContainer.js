@@ -28,9 +28,6 @@ function MessageContainer({ message, getAllUnreadMessages }) {
         }
     };
 
-
-
-
     return (
         <>
             <div
@@ -77,7 +74,6 @@ function MessageContainer({ message, getAllUnreadMessages }) {
                     </div>
                 </div>
             </Collapse>
-
         </>
     );
 }

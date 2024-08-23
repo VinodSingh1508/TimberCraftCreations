@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -6,7 +7,6 @@ import Tabs from 'react-bootstrap/Tabs';
 import Carousel from 'react-bootstrap/Carousel';
 
 function ProductModal({ show, onHide, product, handleAddToCart, loggedInUser }) {
-
   // https://react-bootstrap.netlify.app/docs/components/carousel/
 
   const [key, setKey] = useState('details');
@@ -51,10 +51,6 @@ function ProductModal({ show, onHide, product, handleAddToCart, loggedInUser }) 
                     alt={`Product Image ${index + 1}`}
                     style={{ maxHeight: '500px', objectFit: 'contain' }}
                   />
-                  {/* <Carousel.Caption>
-                    <h3>{`Slide ${index + 1}`}</h3>
-                    <p>Image description or any caption text here.</p>
-                  </Carousel.Caption> */}
                 </Carousel.Item>
               ))}
             </Carousel>
@@ -80,7 +76,6 @@ function ProductModal({ show, onHide, product, handleAddToCart, loggedInUser }) 
         }}>
           <span style={{ "text-align": "center", "color": 'red' }}>Please Login to add item to cart.</span>
         </Modal.Footer>}
-      {/* <Button type="button" onClick={test}>Wishlist</Button> */}
 
     </Modal>
   );

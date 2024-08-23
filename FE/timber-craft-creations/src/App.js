@@ -9,7 +9,6 @@ import {Routes, Route} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import api from './api/axiosConfig';
 import Contact from "./components/Contact";
-// import Services from "./components/Services";
 import Thankyou from "./components/Thankyou";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Admin from "./components/Admin";
@@ -18,13 +17,9 @@ function App() {
   const [loggedInUser, setLoggedInUser] = useState(Cookies.get('user') ? JSON.parse(Cookies.get('user')) : null);
   const [products, setProducts] = useState();
   const getProducts = async () => {
-
     try {
-
         const response = await api.get("/product/getAll");
-
         setProducts(response.data);
-
     }
     catch (err) {
         console.log(err);
@@ -43,10 +38,8 @@ useEffect(() => {
           <Route path="/cart" element={<Cart products={products} loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />} />
           <Route path="/checkout" element={<Checkout products={products} loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />} />
           <Route path="/contact" element={<Contact />} />
-          {/* <Route path="/services" element={<Services />} /> */}
           <Route path="/thankyou" element={<Thankyou />} />
           <Route path="/admin" element={<Admin products={products} />} />
-          {/* <Route path="*" element = {<NotFound/>} /> */}
       </Routes>
       <Footer loggedInUser={loggedInUser}></Footer>
     </div>

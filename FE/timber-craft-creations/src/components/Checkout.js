@@ -14,7 +14,6 @@ function Checkout({ products, loggedInUser, setLoggedInUser }) {
 
     const navigate = useNavigate();
 
-
     useEffect(() => {
         setOrderDetails(getInitialOrderDetails());
         console.log({ loggedInUser });
@@ -232,9 +231,7 @@ function Checkout({ products, loggedInUser, setLoggedInUser }) {
                 phone: billingData.phone,
                 notes: billingData.notes
             }
-        }
-
-        
+        }        
 
         api.post(`http://localhost:8080/order/createOrder/${loggedInUser.userId}`, payload, {
             headers: {
@@ -266,7 +263,6 @@ function Checkout({ products, loggedInUser, setLoggedInUser }) {
             })
             .catch(error => setPaymentError("Order Creation Failed. In case any amount is debited, It will be reverted back to source within 5-6 business days"));
     }
-
 
     return (
         <>

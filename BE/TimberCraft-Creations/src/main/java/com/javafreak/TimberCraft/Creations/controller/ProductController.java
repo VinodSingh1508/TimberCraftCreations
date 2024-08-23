@@ -38,32 +38,6 @@ public class ProductController {
 		}
 	}
 	
-	@PutMapping("/updateProduct/{id}")
-	public ResponseEntity<Product> updateProduct(@PathVariable("id") long id, @RequestBody Product product) {
-		return productService.updateProduct(id, product);			
-	}
-	
-	@DeleteMapping("/deleteProduct/{id}")
-	public ResponseEntity<HttpStatus> deleteProduct(@PathVariable("id") long id) {
-		try {
-			productService.deleteProduct(id);
-			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-
-	}
-	
-	@GetMapping("/searchProduct")
-    public ResponseEntity<List<Product>> searchProduct(@RequestParam String searchString) {
-        List<Product> product = productService.findProductByNameOrDescription(searchString);
-        if (product == null || product.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(product);
-    }
-	
 	@GetMapping("/getAll")
     public ResponseEntity<List<Product>> getAllProduct() {
         List<Product> product = productService.getAllProducts();
@@ -91,4 +65,32 @@ public class ProductController {
 	public ResponseEntity<Product> uploadFile(@RequestBody ProductDTO productDTO) {
         return productService.uploadProduct(productDTO);
     }
+	
+
+	
+	@GetMapping("/searchProduct")
+    public ResponseEntity<List<Product>> searchProduct(@RequestParam String searchString) {
+        List<Product> product = productService.findProductByNameOrDescription(searchString);
+        if (product == null || product.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(product);
+    }
+	
+	@PutMapping("/updateProduct/{id}")
+	public ResponseEntity<Product> updateProduct(@PathVariable("id") long id, @RequestBody Product product) {
+		return productService.updateProduct(id, product);			
+	}
+	
+	@DeleteMapping("/deleteProduct/{id}")
+	public ResponseEntity<HttpStatus> deleteProduct(@PathVariable("id") long id) {
+		try {
+			productService.deleteProduct(id);
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+	}
 }

@@ -29,7 +29,6 @@ function OrderContainer({ order, getAllOrderByStatus, allOrderStatus = [], isAdm
         setNewStatus(order?.status)
     }, []);
 
-
     return (
         <>
             <div
@@ -70,7 +69,6 @@ function OrderContainer({ order, getAllOrderByStatus, allOrderStatus = [], isAdm
                             </div>
                             <div className="form-group ps-2 border-start border-2 border-dark" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px', flexWrap: 'nowrap' }}>
                                 <label className="text-black" htmlFor="status" style={{ whiteSpace: 'nowrap' }}>Update Status</label>
-                                
                                 <select
                                     id="state"
                                     name="state"
@@ -88,16 +86,10 @@ function OrderContainer({ order, getAllOrderByStatus, allOrderStatus = [], isAdm
                                         })
                                     )}
                                 </select>
-
-
                                 <button className="btn btn-primary" onClick={() => handleStatusUpdate(order?.id)} style={{ whiteSpace: 'nowrap' }}>Update Status</button>
                             </div>
                         </div>
                     )}
-
-
-
-
                     <div className="site-blocks-table">
                         <table className="table mb-0">
                             <thead>

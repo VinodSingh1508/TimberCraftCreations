@@ -46,7 +46,6 @@ public class PaymentController {
 	        response.put("amount", order.get("amount"));
 	        response.put("currency", order.get("currency"));
 	        response.put("status", order.get("status"));
-	        // Add other fields as necessary
 
 	        return ResponseEntity.ok(response);
 		} catch (RazorpayException e) {
@@ -59,16 +58,12 @@ public class PaymentController {
 		String razorpayOrderId = data.get("razorpay_order_id");
 		String razorpayPaymentId = data.get("razorpay_payment_id");
 		String razorpaySignature = data.get("razorpay_signature");
-		System.out.println(razorpayOrderId);
-		System.out.println(razorpayPaymentId);
-		System.out.println(razorpaySignature);
 		Map<String, String> response = new HashMap<>();
 
 		try {
 			JSONObject options = new JSONObject(data);
 			boolean isValid = Utils.verifyPaymentSignature(options, razorpayKeySecret);
-			if (isValid) {
-				
+			if (isValid) {				
 		        response.put("isValid", "valid");
 		        response.put("razorpayOrderId", razorpayOrderId);
 		        response.put("razorpayPaymentId", razorpayPaymentId);
@@ -90,10 +85,4 @@ public class PaymentController {
     public ResponseEntity<String> getKey() {       
         return ResponseEntity.ok(razorpayKeyId);
     }
-	
-	@PostMapping("/test")
-	public ResponseEntity<String> test(@RequestBody Map<String, Integer> requestBody) {
-		int x=requestBody.get("amount")+100;
-		return ResponseEntity.ok("::::::::::::::::::::::::::::::::::::::"+x);
-	}
 }

@@ -7,6 +7,7 @@ import Hero from './Hero';
 
 function Shop({ products, loggedInUser, setLoggedInUser }) {
     const [modalShow, setModalShow] = useState(false);
+    const [product, setProduct] = useState();
 
     const handleProductClick = (product) => {
         setProduct(product);
@@ -27,7 +28,6 @@ function Shop({ products, loggedInUser, setLoggedInUser }) {
             });
         }
 
-
         if (!productExists) {
             existingCart.push({
                 "productId": product.productId,
@@ -39,7 +39,6 @@ function Shop({ products, loggedInUser, setLoggedInUser }) {
             existingCart = existingCart.filter(item => item.productId !== product.productId);
         }
 
-
         api.put(`/user/updateUserCart/${userId}`, {
             "cart": JSON.stringify(existingCart)
         })
@@ -48,8 +47,6 @@ function Shop({ products, loggedInUser, setLoggedInUser }) {
                     let user = response.data;
                     Cookies.set('user', JSON.stringify(user));
                     setLoggedInUser(user);
-                } else {
-                    // Todo
                 }
             })
             .catch(function (error) {
@@ -58,33 +55,23 @@ function Shop({ products, loggedInUser, setLoggedInUser }) {
             });
     }
 
-
-    const [product, setProduct] = useState();
-
-
-
-
     return (
         <>
             <div className={`app-container`}>
                 <div className="main-content">
-                <Hero></Hero>
+                    <Hero></Hero>
                     <div className="untree_co-section product-section before-footer-section">
                         <div className="container">
                             <div className="row">
-
                                 {
                                     products && products.length > 0 ? (
                                         products?.map((p) => {
                                             return (
                                                 <div key={p.productId} className="col-12 col-md-4 col-lg-3 mb-5">
                                                     <a className="product-item" href="#" onClick={(e) => { e.preventDefault(); handleProductClick(p); }}>
-                                                        {/* <img src="/images/product-3.png" className="img-fluid product-thumbnail" /> */}
                                                         <img src={`http://localhost:8080/${p.displayImage}`} alt={p.category} className="img-fluid" />
                                                         <h3 className="product-title">{p.name}</h3>
                                                         <strong className="product-price">&#8377; {p.price}</strong>
-
-
                                                         {loggedInUser && (
                                                             <span className="icon-cross">
                                                                 <img
@@ -107,7 +94,6 @@ function Shop({ products, loggedInUser, setLoggedInUser }) {
                                                                 />
                                                             </span>
                                                         )}
-
                                                     </a>
                                                 </div>
                                             )
