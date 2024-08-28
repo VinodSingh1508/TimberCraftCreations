@@ -416,11 +416,7 @@ function LoginModal({ show, onHide, loggedInUser, setLoggedInUser }) {
                 {profileErrors.pass && <p className="error">{profileErrors.pass}</p>}
               </div>
             </Tab>
-
-            {/* <Tab eventKey="logout" title="Log Out" disabled> */}
-            <Tab eventKey="logout" title="Log Out">
-              Are you sure to logout?
-            </Tab>
+            
             <Tab eventKey="orders" title="Your Orders">
               {userOrders && userOrders?.map((ord, index) => (
                 <OrderContainer order={ord}></OrderContainer>
@@ -432,6 +428,11 @@ function LoginModal({ show, onHide, loggedInUser, setLoggedInUser }) {
                   </p>
                 </div>
               }
+            </Tab>
+            
+            {/* <Tab eventKey="logout" title="Log Out" disabled> */}
+            <Tab eventKey="logout" title="Log Out">
+              Are you sure to logout?
             </Tab>
 
           </Tabs>

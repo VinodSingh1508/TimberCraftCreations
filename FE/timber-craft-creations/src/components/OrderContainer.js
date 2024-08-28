@@ -47,6 +47,7 @@ function OrderContainer({ order, getAllOrderByStatus, allOrderStatus = [], isAdm
             >
                 <strong>Order ID:</strong> {order?.id} <strong>Amount:</strong> {order?.total} <strong>Status:</strong> {order?.status} {order?.shippingDate ? ` Shipped On ${formatDate(order?.shippingDate)}` : ''}
             </div>
+
             <Collapse in={open}>
                 <div id={`collapse-container-${order?.id}`} className="border rounded border-2 border-dark mb-2">
                     {isAdmin && (
@@ -90,6 +91,7 @@ function OrderContainer({ order, getAllOrderByStatus, allOrderStatus = [], isAdm
                             </div>
                         </div>
                     )}
+                    
                     <div className="site-blocks-table">
                         <table className="table mb-0">
                             <thead>

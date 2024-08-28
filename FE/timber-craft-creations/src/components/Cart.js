@@ -76,7 +76,7 @@ function Cart({ products, loggedInUser, setLoggedInUser }) {
             ));
 
         let existingCart = loggedInUser.cart ? JSON.parse(loggedInUser.cart) : [];
-        existingCart = existingCart.filter(item => item.productId === prodId);
+        existingCart = existingCart.filter(item => item.productId !== prodId);
         updateUserCart(existingCart);
     }
     const handleCustomizations = (e, prodId) => {

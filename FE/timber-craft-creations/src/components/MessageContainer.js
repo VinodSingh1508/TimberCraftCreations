@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import Collapse from 'react-bootstrap/Collapse';
 import api from '../api/axiosConfig';
@@ -46,6 +47,7 @@ function MessageContainer({ message, getAllUnreadMessages }) {
             >
                 <strong>Message ID:</strong> {message?.msgId} <strong>Name:</strong> {message?.firstName} {message?.lastName} <strong>Email:</strong> {message?.email} <strong>Date:</strong> {formatDate(message?.createdAt)}
             </div>
+            
             <Collapse in={open}>
                 <div id={`collapse-container-${message?.id}`} className="border rounded border-2 border-dark mb-2">
                     <div className="border-bottom border-2 border-dark" style={{ display: 'flex', gap: '10px' }}>
